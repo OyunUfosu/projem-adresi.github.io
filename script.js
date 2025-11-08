@@ -1,3 +1,22 @@
+// script.js dosyasının başına ekleyin
+const BACKEND_URL = "https://your-heroku-app-name.herokuapp.com";
+
+// initializeConnection fonksiyonunu güncelleyin
+function initializeConnection() {
+    try {
+        // Socket.IO bağlantısını kur (Heroku URL'sini kullan)
+        socket = io(BACKEND_URL, {
+            transports: ['websocket', 'polling']
+        });
+        
+        // ... geri kalan kod aynı
+    } catch (error) {
+        console.error('Bağlantı başlatma hatası:', error);
+        showError();
+    }
+}
+
+
 // Kullanıcı veritabanı - şifreler ve kullanıcı adları
 const users = {
     "1234": "Ahmet",
@@ -441,4 +460,5 @@ function leaveRoom() {
         });
         window.remoteAudios = {};
     }
+
 }
